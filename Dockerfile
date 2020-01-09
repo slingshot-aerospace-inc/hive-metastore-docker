@@ -5,9 +5,9 @@ ENV HADOOP_HOME /opt/hadoop/latest/
 ENV HIVE_HOME /opt/hive/latest/
 
 # Versions
-ARG HADOOP_VER=hadoop-2.9.0
+ARG HADOOP_VER=hadoop-3.2.1
 ARG HADOOP_TAR=http://mirror.reverse.net/pub/apache/hadoop/common/${HADOOP_VER}/${HADOOP_VER}.tar.gz
-ARG HIVE_VER=hive-2.3.2
+ARG HIVE_VER=hive-3.1.2
 ARG HIVE_TAR=http://mirrors.gigenet.com/apache/hive/${HIVE_VER}/apache-${HIVE_VER}-bin.tar.gz
 
 # Make the destination directories
