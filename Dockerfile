@@ -27,7 +27,17 @@ RUN cd /opt/hadoop && \
 # Symlink to latest
 RUN ln -s /opt/hadoop/${HADOOP_VER} /opt/hadoop/latest && ln -s /opt/hive/apache-${HIVE_VER}-bin /opt/hive/latest
 
+# Fix Hive incompatibility with Hadoop provided Guava
+RUN rm /opt/hive/latest/lib/guava-19.0.jar && \
+    cp /opt/hadoop/latest/share/hadoop/common/lib/guava-27.0-jre.jar /opt/hive/latest/lib/
+
 # Make a config file
 COPY hive-site.xml /opt/hadoop/latest/etc/hadoop/hive-site.xml
+
+# Add some convenience tools
+RUN apt-get update && \
+    apt-get install -y \
+	procps \
+	less
 
 ENTRYPOINT ["/entrypoint.sh"]
